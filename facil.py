@@ -69,8 +69,6 @@ def verificar_ganhador(tabuleiro):
     
     return ganhador_status
 
-# def jogar()
-
 
 
 
@@ -110,25 +108,28 @@ def menu():
 
     while True:
 
-        ganhador = vez_jogador(jogador1, jogada_jogador1, tabuleiro)
-        empate = verificar_empate(tabuleiro)
-
-        if ganhador == True:
-            print(f"Parabéns Campeão {jogador1}")
-            break
-        elif empate == False:
-            print(f"Deu empate !")
-            break
-        else:
-            ganhador = vez_jogador(jogador2, jogada_jogador2, tabuleiro)
+        try:
+            ganhador = vez_jogador(jogador1, jogada_jogador1, tabuleiro)
             empate = verificar_empate(tabuleiro)
 
             if ganhador == True:
-                print(f"Parabéns Campeão {jogador2}")
+                print(f"Parabéns Campeão {jogador1}")
                 break
             elif empate == False:
-                print(f"Deu empate !!")
+                print(f"Deu empate !")
                 break
+            else:
+                ganhador = vez_jogador(jogador2, jogada_jogador2, tabuleiro)
+                empate = verificar_empate(tabuleiro)
+
+                if ganhador == True:
+                    print(f"Parabéns Campeão {jogador2}")
+                    break
+                elif empate == False:
+                    print(f"Deu empate !!")
+                    break
+        except:
+            print("Algo deu errado...")
 
 
 
